@@ -4,20 +4,20 @@
 Grammatical Evolution
 }
 \description{
-\code{GrammaticalEvolution} evolves an expression using a context free grammar
+\code{GrammaticalEvolution} evolves an expression using a context-free grammar
 to minimize a given fitness function.
 }
 \usage{
 GrammaticalEvolution(grammarDef, fitnessFunction, 
-  seqLen = GetGrammarMaxSequenceLen(grammarDef), 
-  wrappings = 3, elitism = 2, popSize = 25, iterations = 20, 
-  terminationFitness = NA, mutationChance = NA, numExpr = 1,
-  suggestions = NULL, monitorFunc=NULL, plapply = lapply, ...)
+    seqLen = GetGrammarMaxSequenceLen(grammarDef), 
+    wrappings = 3, elitism = 2, popSize = 50, iterations = 100, 
+    terminationFitness = NA, mutationChance = NA, numExpr = 1,
+    suggestions = NULL, monitorFunc=NULL, plapply = lapply, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{grammarDef}{
-    \code{grammar} object, created by \code{\link{CreateGrammar}}
+    \code{grammar} object, created by \code{\link{CreateGrammar}}.
 }
   \item{fitnessFunction}{
     The fitness function, taking a string or a collection of strings
@@ -25,52 +25,54 @@ GrammaticalEvolution(grammarDef, fitnessFunction,
     and returning the fitness of the expression(s).
 }
   \item{seqLen}{
-    Length of integer vector used to create the expression
+    Length of integer vector used to create the expression.
 }
  \item{wrappings}{
-    Number of wrappings in case length of chromosome is not enough for conversion to an expression
+    Number of wrappings in case the length of chromosome is not enough for conversion to an expression.
 }
   \item{elitism}{
-    Number of elite individuals in Genetic Algorithm
+    Number of elite individuals in genetic algorithm.
 }
   \item{popSize}{
-    Population size in genetic algorithm
+    Population size in genetic algorithm.
 }
   \item{iterations}{
-    Number of maximum iterations in genetic algorithm
+    Number of maximum iterations in genetic algorithm.
 }
   \item{terminationFitness}{
-    Target fitness in genetic algorithm
+    Target fitness in genetic algorithm.
 }
   \item{mutationChance}{
-    Mutation chance in genetic algorithm
+    Mutation chance in genetic algorithm. It must be between 0 and 1.
+    By default it is set to \code{1/(1+chromosome size))}.
 }
   \item{numExpr}{
-    Number of expressions generated and given to \code{fitnessFunction}
+    Number of expressions generated and given to \code{fitnessFunction}.
 }
   \item{suggestions}{
-    List of suggested chromosomes to be added to initial population pool
+    List of suggested chromosomes to be added to initial population pool.
 }
  \item{monitorFunc}{
-  A function that is called at each generation. Can be used to monitor evolution of population.
+  A function that is called at each generation. It can be used to monitor evolution of population.
 }
   \item{plapply}{
     \code{lapply} function used for mapping chromosomes to fitness function.
     See details for parallelization tips.
 }
   \item{\dots}{
-    Additional parameters are passed to \code{\link{GeneticAlg.int}}
+    Additional parameters are passed to \code{\link{GeneticAlg.int}}.
 }
 }
 \details{
   This function offers a tiny wrapper around \code{\link{GeneticAlg.int}}.
   It evolves integer sequences and converts them to a collection containing
-  \code{numExpr} strings, which are representation of
-  analytical expressions. These expressions are evaluatable using \code{eval} function.
-  \code{fitnessFunction} receives these strings  and must return a numeric value.
+  \code{numExpr} strings, which are representations of
+  analytical expressions. These expressions can be evaluated using \code{eval} function.
+  The \code{fitnessFunction} receives these strings and must return a numeric value.
   The goal of optimization would be to find a chromosome which minimizes this value.
 
-  It is guaranteed that \code{fitnessFunction} receives at least one string. 
+  Only valid (i.e., terminal) expressions are passed to \code{fitnessFunction},
+  and it is guaranteed that \code{fitnessFunction} receives at least one string. 
 
   If the grammar contains recursive elements, it is advisable that \code{chromosomeLen} is 
   defined manually, as in such cases the possible search space grows explosively
@@ -81,9 +83,9 @@ GrammaticalEvolution(grammarDef, fitnessFunction,
   \code{monitorFunc} receives a list similar to the \code{GrammaticalEvolution}'s return value.
 }
 \value{
-  \item{bestExpression}{String representation of expression(s) with the best fitness}
+  \item{bestExpression}{String representation of expression(s) with the best fitness.}
   \item{gaSummary}{
-      The results of \code{\link{GeneticAlg.int}}}
+      The results of \code{\link{GeneticAlg.int}}.}
 }
 
 % \references{
@@ -119,7 +121,7 @@ fitnessFunction <- function(expr) {
 # expr: a string containing a symbolic expression
 # returns: Symbolic regression Error
   A <- 1:6
-  B <- c(2,5,8,3,4,1)
+  B <- c(2, 5, 8, 3, 4, 1)
 
   result <- EvalExpressions(expr)
 
