@@ -1,5 +1,11 @@
 = Changelog =
 
+2014-10-21 - Changes in version 1.2-1
+ * Added BNF file parser
+ * CreateGrammar default value fixed
+ * Brackets around grammar rule identifiers are optional now
+ * Minor style improvements
+
 2014-06-23 - Changes in version 1.1-1
  * Added Some regression tests
  * Changed GA and GE default popsize and itercount to be more useful

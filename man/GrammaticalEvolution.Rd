@@ -1,10 +1,9 @@
 \name{GrammaticalEvolution}
 \alias{GrammaticalEvolution}
-\title{
-Grammatical Evolution
-}
+
+\title{Grammatical Evolution}
 \description{
-\code{GrammaticalEvolution} evolves an expression using a context-free grammar
+Evolves an expression using a context-free grammar
 to minimize a given fitness function.
 }
 \usage{
@@ -106,12 +105,12 @@ GrammaticalEvolution(grammarDef, fitnessFunction,
 }
 \examples{
 # Grammar Definition
-ruleDef <- list(list("expr",     list("<der-expr><op><der-expr>")),
-                list("der-expr", list("<func>(<var>)", "<var>")),
-                list("func",     list("log", "exp", "sin", "cos")),
-                list("op",       list("+", "-", "*")),
-                list("var",      list("A", "B", "<n>")),
-                list("n",        list("1", "2", "3", "4")))
+ruleDef <- list(list("<expr>",     list("<der-expr><op><der-expr>")),
+                list("<der-expr>", list("<func>(<var>)", "<var>")),
+                list("<func>",     list("log", "exp", "sin", "cos")),
+                list("<op>",       list("+", "-", "*")),
+                list("<var>",      list("A", "B", "<n>")),
+                list("<n>",        list("1", "2", "3", "4")))
 
 # Creating the grammar object
 grammarDef <- CreateGrammar(ruleDef, startSymb = "<expr>")

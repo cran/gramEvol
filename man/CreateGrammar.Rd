@@ -5,12 +5,13 @@
 \alias{GetGrammarMaxRuleSize}
 \alias{GetGrammarMaxSequenceLen}
 \alias{GetGrammarNumOfExpressions}
-\title{Create context-free grammar object}
+
+\title{Context-free Grammar Object}
 \description{ %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-Creates a context-free grammar object. 
+Create and examine a context-free grammar object. 
 }
 \usage{
-CreateGrammar(ruleDef, startSymb = "expr")
+CreateGrammar(ruleDef, startSymb = "<expr>")
 
 GetGrammarDepth(grammar, max.depth = length(grammar$def), 
     startSymb = grammar$startSymb)
@@ -26,7 +27,8 @@ GetGrammarNumOfExpressions(grammar, max.depth = length(grammar$def),
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{ruleDef}{
-    Grammatical rule definition, as a collection of symbols and sequences 
+    Grammatical rule definition. Either a character string or \code{\link{connection}} to a .bnf file,
+    or a list of symbols and sequences 
     with syntax similar to Backus-Naur form. 
     See details. 
   }
@@ -43,9 +45,10 @@ GetGrammarNumOfExpressions(grammar, max.depth = length(grammar$def),
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
-  The rule definition is a collection of lists,  simulating Backus-Naur context-free
-  grammatical form. Each list is made of a \code{symbol},
-  followed by a list of production rules, i.e. possible \code{sequences} 
+  The rule definition is the grammar described in Backus-Naur context-free grammatical format.
+  \code{CreateGrammar} can read and parse .bnf files as well as a \code{list} simulating BNF format.
+  Each list has to made of a \emph{symbol},
+  followed by a list of production rules, i.e. possible \emph{sequences} 
   that will replace the symbol.
   If the sequence is surrounded by '<' or '>', it is considered as non-terminal
   and must be defined. Other symbols are considered terminals.
@@ -83,12 +86,12 @@ GetGrammarNumOfExpressions(grammar, max.depth = length(grammar$def),
 }
 \examples{
 # Define a simple grammar
-# <expr> := <var><op><var>
-# <op> := "+" | "-" | "*"
-# <var> := "A" | "B"
-ruleDef <- list(list("expr", list("<var><op><var>")),
-                list("op",   list("+", "-", "*")),
-                list("var",  list("A", "B")))
+# <expr> ::= <var><op><var>
+# <op>   ::= + | - | *
+# <var>  ::= A | B
+ruleDef <- list(list("<expr>", list("<var><op><var>")),
+                list("<op>",   list("+", "-", "*")),
+                list("<var>",  list("A", "B")))
 
 # Create a grammar object
 grammarDef <- CreateGrammar(ruleDef, startSymb = "<expr>")			   
