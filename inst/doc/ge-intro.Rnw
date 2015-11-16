@@ -10,12 +10,6 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 
-\usepackage{algorithmicx}
-\usepackage{algorithm}% http://ctan.org/pkg/algorithm
-\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
-%\renewcommand{\algorithmicrequire}{\textbf{Input}}
-%\renewcommand{\algorithmicensure}{\textbf{Output}}
-
 \usepackage[nounderscore]{syntax}
 \setlength{\grammarparsep}{2pt plus 1pt minus 1pt} % increase separation between rules
 \setlength{\grammarindent}{6em} % increase separation between LHS/RHS
@@ -90,7 +84,7 @@ they are extensively used in computer science for describing programming languag
 \subsubsection{Informal introduction to context-free grammars}
 \label{sec:informal_grammar}
 
-GE uses \emph{context-free grammar} to describe the syntax of programs.
+GE uses a \emph{context-free grammar} to describe the syntax of programs.
 
 A grammar in which the rules are not sensitive to the sentence's context is called
 a \emph{context-free grammar} (CFG), and is defined using a collection of 
@@ -147,7 +141,7 @@ $\mathcal{S} \in \mathcal{N}$ is the start symbol.
 A production rule $n \rightarrow V$ is realized by replacing the non-terminal symbol $n \in \mathcal{N}$ 
 %in string $\alpha$ 
 with the symbol $v \in V$,
-where $V \subseteq (\mathcal{T} \cup \mathcal{N})$ is a sequence of terminal and/or non-terminal symbols.
+where $V \in (\mathcal{T} \cup \mathcal{N})^*$ is a sequence of terminal and/or non-terminal symbols.
 
 For more details on CFGs, their relation to context-free languages, parsing, compilers and
 other related topics refer to \cite{Sethi1986Compiler} or Wikipedia:

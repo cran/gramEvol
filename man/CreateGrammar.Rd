@@ -2,9 +2,9 @@
 \alias{CreateGrammar}
 \alias{grule}
 \alias{gsrule}
+\alias{gvrule}
 \alias{print.grammar}
 \alias{print.GERule}
-\alias{c.GERule}
 
 \title{Context-free Grammar Object}
 \description{ %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -15,6 +15,8 @@ Creates a context-free grammar object.
 
   gsrule(...)
 
+  gvrule(vec)
+
   CreateGrammar(ruleDef, startSymb)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -23,6 +25,9 @@ Creates a context-free grammar object.
     A series of comma separated strings or expressions, for \code{gsrule} and
     \code{grule} respectively. Expressions can be wrapped in \code{.()} to preserve their 
     commas or assignment operators.
+  }
+  \item{vec}{
+    An iterable vector or list.
   }
   \item{ruleDef}{
     Grammatical rule definition. Either a list of grammar rule objects (\code{GERule}) created using \code{grule} and \code{gsrule}
@@ -46,13 +51,15 @@ Creates a context-free grammar object.
   in the collection determines the \emph{production rule}, 
   i.e., possible \emph{sequences} that will replace the symbol.
 
-  Defining a grammar rule object (\code{GERule}) can take two forms:
+  Defining a grammar rule object (\code{GERule}) can take three forms:
 
   1. The first form uses \code{grule} (Grammar Rule), where R expressions are accepted. In the mapping process,
    variables are looked up and replaced using the production rules.
 
   2. The second form uses \code{gsrule} (Grammar String Rule) and uses character strings. The input to \code{gsrule} are character string values, where any value surrounded by '<' or '>' is considered as \emph{non-terminal symbols} and
   will be replaced using the rule with the same name in the mapping process. Other symbols are considered terminals. This form allows generation of sequences that are not syntactically valid in R (such as \code{`var op var`}).
+
+  3. The third form uses \code{gvrule} (Grammar Vector Rule), where objects within an iterable (vector or list) containing all of the expressions are used as individual rules. 
 
   Alternatively, \code{CreateGrammar} can read and parse .bnf text files.
 }
@@ -75,6 +82,7 @@ Creates a context-free grammar object.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
+\code{\link[=c.GERule]{c}},
 \code{\link{GrammarMap}},
 \code{\link{GrammaticalEvolution}}
 }
@@ -90,6 +98,10 @@ ruleDef <- list(expr = gsrule("<var><op><var>"),
 
 # print rules
 print(ruleDef)
+
+# create and display a vector rule
+vectorRule = gvrule(1:5)
+print(vectorRule)
 
 # Create a grammar object
 grammarDef <- CreateGrammar(ruleDef)

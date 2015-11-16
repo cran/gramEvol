@@ -1,6 +1,9 @@
+importFrom("stats", "dnorm", "runif")
+importFrom("utils", "tail")
 export(
     "grule",
     "gsrule",
+    "gvrule",
     "CreateGrammar",
     "GrammarMap",
     "GrammarGenotypeToPhenotype",

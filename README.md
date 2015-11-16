@@ -1,31 +1,28 @@
 gramEvol: Grammatical Evolution for R
 =====================================
-The files include source code and documentation of *gramEvol: Grammatical Evolution for R*.
+
+This package includes source code and documentation of *gramEvol: Grammatical
+Evolution for R*.
+
+*gramEvol* implements grammatical evolution (GE) in native R syntax. It allows
+discovering programs that can achieve a desired goal, by performing an
+evolutionary optimization over a population of R expressions generated via a
+user-defined grammar. Functions are provided for creating and manipulating
+context-free grammars (CFGs), random search, exhaustive search, and evolutionary
+optimization. Users are only required to define their program structure via a
+grammar, and a cost function to evaluate the fitness of each program.
+
+More information regarding the grammatical evolution is brought in the package's
+vignette.
 
 ### Contact Information
- * Farzad Noorian <farzad.noorian@sydney.edu.au> (Maintainer)
- * Anthony Mihirana de Silva <anthonymihirana.desilva@sydney.edu.au>
+ * Farzad Noorian <farzad.noorian@gmail.com> (Maintainer)
+ * Anthony Mihirana de Silva <mihids@gmail.com>
 
 ### Release and Development
-The release version of this package is available on CRAN:
-<http://cran.r-project.org/web/packages/gramEvol/index.html>
- 
-A developmental repository is available on github:
+The latest release and developmental versions of this package are available on:
 <https://github.com/fnoorian/gramEvol>
  
-### Citation
-This package was created using source files created for and used in:
-
-Anthony Mihirana de Silva, Farzad Noorian, Richard I. A. Davis, and Philip H. W. Leong, 
-A hybrid feature selection and generation algorithm for electricity load prediction 
-using grammatical evolution, In IEEE 12th International Conference on Machine 
-Learning and Applications ICMLA 2013, special session on Machine Learning in 
-Energy Applications, pp. 211-217, 2013.
-URL: <http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6786110>.
-
-Although the paper uses more advanced techniques, we would be more than happy
-to be cited for this package.
-
 ### License
 All files in this package, including the documentation and vignettes,
 are distributed under GNU GPL v2.0 or later license.
