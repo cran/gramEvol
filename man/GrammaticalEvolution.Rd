@@ -16,10 +16,12 @@ GrammaticalEvolution(grammarDef, evalFunc,
               wrappings = 3, 
               suggestions = NULL,
               optimizer = c("auto", "es", "ga"),
-              popSize = 8, newPerGen = "auto", elitism = 2,
+              popSize = "auto", newPerGen = "auto", elitism = 2,
               mutationChance = NA,
-              iterations = 1000, terminationCost = NA, 
+              iterations = "auto",
+              terminationCost = NA,
               monitorFunc = NULL,
+              disable.warnings=FALSE,
               plapply = lapply, ...)
 
 \method{print}{GrammaticalEvolution}(x, ..., show.genome = FALSE)
@@ -60,7 +62,7 @@ GrammaticalEvolution(grammarDef, evalFunc,
 	If \code{"auto"} is used, \code{popSize} and \code{iterations} are tweaked based on the grammar as well.
 }
   \item{popSize}{
-    Population size in the evolutionary optimizer.
+    Population size in the evolutionary optimizer. By default, 8 for ES and 48 for GA.
 }
   \item{newPerGen}{
     Number of randomly generated individuals in evolution strategy.
@@ -73,7 +75,8 @@ GrammaticalEvolution(grammarDef, evalFunc,
 }
 
   \item{iterations}{
-    Number of maximum iterations in the evolutionary optimizer.
+    Number of maximum iterations in the evolutionary optimizer. By default, 1000 for \code{"es"}
+    optimizer and 200 for \code{"ga"}.
 }
   \item{terminationCost}{
     Target cost. If a sequence with this cost or less is found,
@@ -86,6 +89,10 @@ GrammaticalEvolution(grammarDef, evalFunc,
 }
  \item{monitorFunc}{
   A function that is called at each generation. It can be used to monitor evolution of population.
+}
+
+\item{disable.warnings}{
+  If \code{TRUE}, suppresses any warnings generated while evaulating \code{evalFunc}s.
 }
   \item{plapply}{
     \code{lapply} function used for mapping chromosomes to the cost function.

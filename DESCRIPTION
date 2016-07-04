@@ -1,8 +1,8 @@
 Package: gramEvol
 Type: Package
 Title: Grammatical Evolution for R
-Version: 2.1-2
-Date: 2015-11-11
+Version: 2.1-3
+Date: 2016-07-04
 Author: Farzad Noorian, Anthony Mihirana de Silva
 Maintainer: Farzad Noorian <farzad.noorian@gmail.com>
 Description: A native R implementation of grammatical evolution (GE). GE facilitates the discovery of programs that can achieve a desired goal. This is done by performing an evolutionary optimisation over a population of R expressions generated via a user-defined context-free grammar (CFG) and cost function.
@@ -12,6 +12,6 @@ Depends:
 Suggests: rex
 License: GPL (>= 2)
 NeedsCompilation: no
-Packaged: 2015-11-11 05:24:45 UTC; farzad
+Packaged: 2016-07-03 10:34:22 UTC; Farzad
 Repository: CRAN
-Date/Publication: 2015-11-16 18:12:42
+Date/Publication: 2016-07-04 09:12:56
