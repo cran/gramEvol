@@ -41,6 +41,7 @@ GeneticAlg.int(genomeLen, codonMin, codonMax,
 }
   \item{suggestions}{
   A list of suggested chromosomes to be used in the initial population.
+  Alternatively, an m-by-n matrix, where m is the number of suggestions and n is the chromosome length.
 }
   \item{popSize}{
   Size of the population.
@@ -165,7 +166,7 @@ must be exported to worker nodes before invoking \code{GeneticAlg.int}.
 
 \references{
 This function is partially inspired by \code{genalg} package
-by Egon Willighagen. See \url{http://cran.r-project.org/package=genalg}.
+by Egon Willighagen. See \url{https://cran.r-project.org/package=genalg}.
 }
 
 % \author{

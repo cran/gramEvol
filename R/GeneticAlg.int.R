@@ -20,7 +20,7 @@ GeneticAlg.int <- function(genomeLen, codonMin, codonMax,
   # geneCrossoverPoints = An array determining the genes to be swapped in crossover
   #
   # Partially based on "R Based Genetic Algorithm (genalg package)""
-  # http://cran.r-project.org/web/packages/genalg/
+  # https://cran.r-project.org/web/packages/genalg/
   
   is.verbose = verbose
   verbose = function(...) { if (is.verbose) cat(...)}
@@ -75,6 +75,16 @@ GeneticAlg.int <- function(genomeLen, codonMin, codonMax,
   
   if (!is.null(suggestions)) {
     verbose("Adding suggestions to first population...\n");
+    
+    if ("list" %in% class(suggestions)) {
+      verbose("Suggestions given as a list.\n");
+      suggestions = do.call(rbind, suggestions)
+    }
+  
+    if (ncol(suggestions) != genomeLen) {
+      stop("suggestions must be a list of chromosomes or a matrix of 'nrow=numSuggestions X ncol=genomeLen'")
+    }
+  
     suggestionCount = nrow(suggestions)
     population[1:suggestionCount, ] <- suggestions
     verbose("Filling others with random values in the given domains...\n");
@@ -222,11 +232,11 @@ GeneticAlg.int <- function(genomeLen, codonMin, codonMax,
       mutationCount = 0;
       for (object in (elitism+1):popSize) { # don't mutate the best
         
-        dempeningFactor = (iterations-iter)/iterations
+        dampeningFactor = (iterations-iter)/iterations
         
         mutResult <- ga.mutation(population[object,], mutationChance, genomeLen, 
                                  genomeMin, genomeMax, allowrepeat,
-                                 dempeningFactor)
+                                 dampeningFactor)
         
         population[object, ] = mutResult$newGenome;
         evalVals[object] = NA;

@@ -1,12 +1,19 @@
 # News
 
+## 2017-XX-XX - Changes in version 2.1-4
+ * Add ReplaceInExpression helper function
+ * Update GeneticAlg.int to accept suggestions as a list (Thanks to Rafael Klaic)
+ * Update vignette with new grammar rules
+ * Fix bug in Evolutionary strategy when popsize = 1 (Thanks to Daniel Klotz <https://github.com/danklotz>)
+ * Change ga.mutation parameter to fix its typo (Thanks to Daniel Klotz <https://github.com/danklotz>)
+
 ## 2016-07-04 - Changes in version 2.1-3
 
  * Add a supress warnings option to `GrammaticalEvolution` optimizer
  * Update citation with the information from Journal of Statistical Software
  * Fix iteration parameter auto-set overriding manual value bug
- * Fix suggested initial chromosome bug (Thanks to danklotz)
- 
+ * Fix suggested initial chromosome bug (Thanks to Daniel Klotz <https://github.com/danklotz>)
+
 ## 2015-11-11 - Changes in version 2.1-2
 
  * Changed contact email
